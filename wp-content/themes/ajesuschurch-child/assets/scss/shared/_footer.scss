@@ -1,0 +1,97 @@
+
+/*********************
+FOOTER STYLES
+*********************/
+
+#footer {
+
+  clear: both;
+  @include antialias;
+  background-color: $black;
+  color: $off-white;
+
+  .container {
+    padding: 4.25em 0 2.25em 0;
+  }
+  section {
+    @include clearfix;
+  }
+  ul {
+    @extend %structural-list;
+  }
+  p, ul {
+    margin: 0;
+  }
+
+  .copyright {
+    font-size: 13px;
+    color: $dark-gray;
+  }
+
+  .social {
+    margin-top: 3.25em;
+    margin-bottom: 2.5em;
+  }
+
+  .social-message {
+    margin-bottom: 0.25em;
+  }
+
+  .social-links {
+    li {
+      display: inline-block;
+      line-height: 1.15;
+      a {
+        display: block;
+        font-size: 35px;
+        width: 24px;
+        color: $white;
+        &:hover {
+          color: $white-hover;
+        }
+      }
+    }
+  }
+}
+
+/*********************
+TABLETS / DESKTOP
+*********************/
+
+@include media($small) {
+  #footer {
+    .container {
+      padding: 4.25em 0 3.75em 0;
+    }
+    .contact {
+      float: left;
+      width: 50%;
+    }
+    .social {
+      float: right;
+      text-align: right;
+      margin: 0;
+      width: 50%;
+    }
+    .social-message {
+      margin-bottom: 1em;
+    }
+    .copyright {
+      font-size: 12px;
+    }
+    section:last-child {
+      padding-top: 10em;
+    }
+  }
+}
+
+/*********************
+DESKTOP WIDTH
+*********************/
+
+@include media($large) {
+  #footer .social {
+    // float: right;
+    // margin-right: 0;
+  }
+}

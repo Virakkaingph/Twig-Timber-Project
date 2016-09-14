@@ -1,0 +1,70 @@
+
+{% extends 'layout.twig' %}
+{% block content %}
+
+
+
+<section class="container copy final">
+    
+    <h1 class="teaching-title"><a href="{{ series.url }}">{{ series.title }}</a>: {{ post.title }}</h1>
+    <p class="teaching-subtitle">{{ post.subtitle }}</p>
+    <p class="teaching-meta">
+        {{ post.speaker_name }}
+        <span class="pipe">|</span> {{ post.teaching_date|date }}
+        {% if post.duration %} <span class="pipe">|</span> Duration: {{ post.duration }}{% endif %}
+    </p>
+    <br/>
+    
+<div>
+{% if post.teaching_vimeo_id %}
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://player.vimeo.com/video/{{ post.teaching_vimeo_id }}' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+{% endif %}
+</div>
+
+    {{ post.content }}
+
+    <!-- Audio links and downlaods -->
+    <div class="teaching-extras">
+        {% if post.itunes_url or post.audio_file_url %}
+          <h2 class="h3">Teaching Audio</h2>
+          <div class="audio-player">{{ fn('audio_player', post.audio_file_url) }}</div>
+          <p>
+            {% if post.itunes_url %}<a href="{{ post.itunes_url }}" title="Listen on iTunes" target="_blank">Listen on iTunes</a>{% endif %}
+            {% if post.itunes_url and post.audio_file_url %}<span class="pipe">|</span>{% endif %}
+            {% if post.audio_file_url %}{{ fn('build_link', post.audio_file_url, 'Download Audio') }}{% endif %}
+          </p>
+        {% endif %}
+        {% if settings.audio_podcast_url or settings.video_podcast_url %}
+          <h2 class="h3">Podcast</h2>
+          <p>
+            {% if settings.audio_podcast_url or settings.audio_itunes_url %}Audio Feed:&nbsp;{% endif %}
+            {% if settings.audio_itunes_url %}<a href="{{ settings.audio_itunes_url }}" title="Subscribe to iTunes podcast" target="_blank">iTunes</a>{% endif %}
+            {% if settings.audio_itunes_url and settings.audio_podcast_url %}<span class="pipe">|</span>{% endif %}
+            {% if settings.audio_podcast_url %}<a href="{{ settings.audio_podcast_url }}" title="Subscribe to audio podcast" target="_blank">XML</a>{% endif %}
+
+            {% if settings.video_podcast_url or settings.video_itunes_url %}<br/>Video Feed:&nbsp;{% endif %}
+            {% if settings.video_itunes_url %}<a href="{{ settings.video_itunes_url }}" title="Subscribe to iTunes video podcast" target="_blank">iTunes</a>{% endif %}
+            {% if settings.video_itunes_url and settings.video_podcast_url %}<span class="pipe">|</span>{% endif %}
+            {% if settings.video_podcast_url %}<a href="{{ settings.video_podcast_url }}" title="Subscribe to video podcast" target="_blank">XML</a>{% endif %}
+
+          </p>
+        {% endif %}
+    </div>
+</section>
+
+<!--
+  CSS: Hide .blog-title h1
+
+TODO: Create partials for blog views
+TODO: More content (more by...)
+TODO: Add audio download, etc
+TODO: Add link to teachings by same speaker
+TODO: Highlight current lesson in series_lessons?
+TODO: Test :target seudo-selector in supported browsers
+-->
+<!--ul id="current-lessons" class="collapsed-grid lesson-tiles more-gap">
+    {# include 'teaching/_lessons.twig' #}
+</ul-->
+<!--a href="/feed?post_type=teaching" target="_blank">RSS</a-->
+
+{% endblock %}

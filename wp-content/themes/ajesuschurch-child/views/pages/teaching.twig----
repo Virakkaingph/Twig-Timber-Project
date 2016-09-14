@@ -1,0 +1,36 @@
+
+{% extends 'layout.twig' %}
+{% block content %}
+
+<section class="container copy">
+    <h1>Current Series: {{ current_series.title }}</h1>
+    {{ current_series.content }}
+</section>
+
+<ul id="current-lessons" class="collapsed-grid lesson-tiles more-gap">
+    {% include 'teaching/_lessons.twig' %}
+</ul>
+
+<section class="container copy">
+    <h1>Past Series</h1>
+</section>
+
+<ul id="past-series" class="grid-menu">
+  {% for series in past_series %}
+    <li class="{% if series.foreground == 'white' %}fg-white{% endif %} series-{{ series.id }}"
+        {{ fn('set_bg_id', series.tile_image, 'menu-tile') }}>
+        <a href="{{ series.url }}">
+          <div class="inner">
+            <!-- Using tile image to display the name -->
+            <span class="name">{{ series.title }}</span>
+          </div>
+        </a>
+    </li>
+  {% else %}
+    <li class="none">
+      <div class="inner">No past series</div>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

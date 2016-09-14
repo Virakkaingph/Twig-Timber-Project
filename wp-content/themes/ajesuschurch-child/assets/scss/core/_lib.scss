@@ -1,0 +1,249 @@
+
+/*********************
+CLEARFIX
+*********************/
+
+// Contain floats: nicolasgallagher.com/micro-clearfix-hack/
+.clearfix {
+  @include clearfix;
+}
+
+/*********************
+FUNCTIONS
+*********************/
+
+@function strip-unit($number) {
+  @if type-of($number) == "number" {
+    @return ($number / ($number * 0 + 1));
+  } @else {
+    @warn "Not a number: #{$number}";
+    @return $number;
+  }
+}
+
+@function px($em-value, $parent-font-size: $base-font-size) {
+  @if unit($em-value) == "em" {
+    $em-value: strip-unit($em-value);
+    $parent-font-size: strip-unit($parent-font-size);
+    @return ($em-value * $parent-font-size) * 1px;
+  } @else {
+    @warn "Not an em value: #{$em-value}";
+    @return $em-value;
+  }
+}
+
+/*********************
+TOOLS
+*********************/
+
+// BORDER-BOX ALL THE THINGS! (http://paulirish.com/2012/box-sizing-border-box-ftw/)
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing:    border-box;
+  box-sizing:         border-box;
+}
+
+// http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+.image-replacement {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// overrides
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+// text alignment
+.text-left   { text-align: left; }
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.break-word  { word-wrap: break-word; }
+
+/*********************
+CENTERING
+*********************/
+
+@mixin translate($x, $y) {
+  -webkit-transform: translate($x, $y);
+      -ms-transform: translate($x, $y);
+       -o-transform: translate($x, $y);
+          transform: translate($x, $y);
+}
+
+@mixin centered() {
+  position: absolute;
+  top: 50%; left: 50%;
+  @include translate(-50%, -50%);
+}
+
+@mixin center-horizontally() {
+  position: absolute;
+  left: 50%;
+  @include translate(-50%, 0);
+}
+
+@mixin center-vertically() {
+  position: absolute;
+  top: 50%;
+  @include translate(0, -50%);
+}
+
+/*********************
+COLLAPSED GRID
+*********************/
+
+// Add to parent element of collapsed grid--
+// alternative to using Neat's Table Grid
+@mixin tile-container() {
+  // float: left;
+  // display: table;
+  // table-layout: fixed;
+  // width: 100%;
+}
+
+// This allows a Neat-like syntax while
+// working with our sans-gutters grid
+@mixin tile-columns($columns) {
+  @if ($columns == 0) { $columns: 1; }
+  float: left;
+  display: block; // table-cell
+  width: percentage(1 / $columns);
+}
+
+/*********************
+BASIC UTILITIES
+*********************/
+
+%srt {
+  text-indent: -9999em;
+}
+
+%structural-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin antialias() {
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Not sure if opacity still requires prefixes
+@mixin opacity($amount) {
+  opacity: $amount;
+}
+
+// Work with text
+@mixin text-height($height) {
+  line-height: $height;
+  height: $height;
+}
+
+// Element that never wraps
+@mixin no-wrap() {
+  overflow: hidden;
+  white-space: nowrap;
+  // text-wrap: none;
+}
+
+// Kill auto hyphenation
+@mixin no-hyphens() {
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  hyphens: none;
+}
+
+// Hide text on a button
+@mixin hide-button-text() {
+  text-indent: -9999px;
+  // * html button { font-size: 0; display: block; line-height: 0; }  /* ie6 */
+  // *+html button { font-size: 0; display: block; line-height: 0; }  /* ie7 */
+  line-height: 999px; /* Set it higher than your image height */
+  overflow: hidden; /* Hide the text */
+  font-size: 0; /* FF2 doesn’t like the above */
+}
+
+// Setup image path
+$img-path: "../images" !default;
+
+// Common for svg background image
+@mixin svg-background($filename: false, $bg-color: false) {
+  text-indent: -9999px;
+  @if $filename {
+    background: url(#{$img-path}/#{$filename}.svg);
+  }
+  @if $bg-color {
+    background-color: $bg-color;
+  }
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+// Cover parent element
+@mixin overlay() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/*********************
+ELEMENTS
+*********************/
+
+@mixin hr($height, $color) {
+  display: block;
+  height: $height;
+  border: 0;
+  border-top: $height solid $color;
+  margin: 1em 0;
+  padding: 0;
+}
+
+// Style input placeholder (works with libsass)
+@mixin placeholder {
+  &::-webkit-input-placeholder { @content }
+  &:-moz-placeholder           { @content }
+  &::-moz-placeholder          { @content }
+  &:-ms-input-placeholder      { @content }
+}
+
+/*********************
+MOBILE HELPERS
+*********************/
+
+@mixin mobile-gutters($gutter: 10px) {
+  min-width: 320px - (2 * $gutter);
+  margin: 0 $gutter;
+}

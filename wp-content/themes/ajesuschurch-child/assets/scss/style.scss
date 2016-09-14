@@ -1,0 +1,54 @@
+// This is a manifest file that will be compiled to include all the files listed below.
+
+// Load vendor assets
+@import "vendor/normalize";
+@import "bourbon";
+
+// Grid logic
+@import "core/neat_config"; // <-- This should use var defaults
+@import "neat";
+
+// Load variables/mixins
+@import "core/config";
+@import "core/lib";
+@import "core/mixins";
+
+// Core imports
+@import "core/base";
+@import "core/type";
+@import "core/print";
+@import "core/forms";
+@import "core/icons";
+
+// Modules
+@import "shared/navbar";
+@import "shared/header";
+@import "shared/wp_content";
+@import "shared/grid_tiles";
+@import "shared/lightbox";
+@import "shared/sidebar";
+@import "shared/heroes";
+@import "shared/footer";
+@import "shared/media";
+@import "shared/sites";
+@import "shared/events";
+
+// Church theme
+@import "church/header";
+@import "church/footer";
+
+// Network pages
+@import "pages_network/404";
+@import "pages_network/home";
+@import "pages_network/churches";
+@import "pages_network/teaching";
+@import "pages_network/music";
+@import "pages_network/blog";
+@import "pages_network/search";
+
+// Church pages
+@import "pages_church/home";
+@import "pages_church/teaching";
+@import "pages_church/gather";
+@import "pages_church/scatter";
+@import "pages_church/serve";

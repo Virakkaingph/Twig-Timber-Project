@@ -1,0 +1,33 @@
+
+<li class="grid-cell event">
+  <h3 class="name">{{ event.title }}</h3>
+  <p class="desc">{{ event.content }}</p>
+
+  {% if event.giving_form_url %}
+  <p class="giving">
+      <a href="{{ event.giving_form_url }}" target="_blank">{{ event.giving_link_text }}</a>
+  </p>
+  {% endif %}
+  {% if event.dates %}
+    <p class="dates"><strong>Dates: </strong>{{ event.dates }}</p>
+  {% endif %}
+  {% if event.cost %}
+    <p class="time"><strong>Cost: </strong>{{ event.cost }}</p>
+  {% endif %}
+  {% if event.time %}
+    <p class="time"><strong>Time: </strong>{{ event.time }}</p>
+  {% endif %}
+  {% if event.location %}
+    <p class="location"><strong>Location: </strong>{{ event.location }}</p>
+  {% endif %}
+  {% if event.register_by %}
+    <p class="time"><strong>Registration Deadline: </strong>{{ event.register_by }}</p>
+  {% endif %}
+
+  {% if event.sign_up_form_url %}
+  <p class="height-assist">&nbsp;</p>
+  <p class="sign-up">
+      <a href="{{ event.sign_up_form_url }}" target="_blank">{{ event.sign_up_link_text }}</a>
+  </p>
+  {% endif %}
+</li>

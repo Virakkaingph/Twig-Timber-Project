@@ -1,0 +1,54 @@
+
+{% extends 'layout.twig' %}
+{% block content %}
+
+<ul class="grid-menu home-grid-menu" style="display:block;">
+    <li {{ fn('set_bg_id', gather_tile_id, 'menu-tile') }}>
+        <a href="/gather"><div class="inner"><span class="name">Gather</span></div></a>
+    </li>
+    <li {{ fn('set_bg_id', scatter_tile_id, 'menu-tile') }}>
+        <a href="/scatter"><div class="inner"><span class="name">Scatter</span></div></a>
+    </li>
+    <li {{ fn('set_bg_id', serve_tile_id, 'menu-tile') }}>
+        <a href="/serve"><div class="inner"><span class="name">Serve</span></div></a>
+    </li>
+    <li {{ fn('set_bg_id', give_tile_id, 'menu-tile') }}>
+        <a href="/give"><div class="inner"><span class="name">Give</span></div></a>
+    </li>
+</ul>
+
+<section id="learn-more" class="container learn-more copy">
+    <div class="home-gather">
+        {{ page.gather_block }}
+        <p><a href="gather" class="btn">More about Gathering</a></p>
+    </div>
+    <div class="divider">&nbsp;</div>
+    <div class="home-scatter">
+        {{ page.scatter_block }}
+        <p><a href="scatter" class="btn">More about Scattering</a></p>
+    </div>
+</section>
+
+<section id="location-info" class="container location-info copy">
+    <div class="home-about">{{ page.content }}</div>
+    <div class="home-times">
+        <h3>Gathering Times</h3>
+        <p>{{ fn('nl2br', settings.gather_times) }}</p>
+        <h3>Gathering Place</h3>
+        <p>{{ fn('nl2br', settings.gather_address) }}</p>
+    </div>
+    <div class="home-place">
+        <h3>Contact</h3>
+        <p>{{ fn('email_link', settings.email) }}<br/>
+        {{ settings.phone }}</p>
+        <h3>Office</h3>
+        <p>{{ fn('nl2br', settings.office_address) }}</p>
+    </div>
+</section>
+
+<section id="upcoming-events" class="container upcoming-events">
+    <h2 class="h3">{{ site.name }} Events</h2>
+    {% include '_events.twig' %}
+</section>
+
+{% endblock %}

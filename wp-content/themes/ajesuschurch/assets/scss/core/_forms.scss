@@ -1,0 +1,146 @@
+
+/*********************
+RESETS
+*********************/
+
+button,
+input,
+select,
+textarea {
+  color: $black;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/*********************
+INPUT STYLES
+*********************/
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="submit"] {
+  -webkit-appearance: none;
+  border-radius: 0;
+  border: none;
+  outline: none;
+  margin: 0;
+}
+
+.btn-select {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  -webkit-background-clip: padding-box;
+  vertical-align: top !important;
+  text-align: left !important;
+  -webkit-user-select: none;
+  cursor: pointer;
+  span {
+    display: block;
+    margin-right: 8px;
+    padding: 0 9px 0 8px;
+    // TODO: Add arrow
+  }
+  select {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border: none;
+    background: none;
+    width: 100%;
+    cursor: pointer;
+  }
+}
+
+/*********************
+STYLED SELECT
+*********************/
+
+.select-base {
+  margin: 0;
+  -webkit-appearance: none !important;
+  border-radius: 0;
+  border: none;
+  background: transparent !important;
+  display: inline-block;
+  color: white;
+  font-family: $sans-serif-header;
+  font-size: em(16);
+  padding: em(15) em(20);
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+    background: darken($medium-gray, 2%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  option {
+    color: black;
+  }
+}
+
+.styled-select {
+  background: $dark-gray;
+  min-width: 300px;
+  overflow: hidden;
+  position: relative;
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 99;
+    right: 5%;
+    top: 50%;
+  }
+
+  &:hover {
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: 99;
+      right: 5%;
+      top: 50%;
+      @include triangle(15px, white, down);
+      pointer-events: none;
+      // filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='your_transparent.png', sizingMethod='scale');
+    }
+  }
+
+  .ie9 & {
+    &:after { display: none; }
+  }
+
+  .select-base {
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+  }
+
+  .select-base::-ms-expand {
+    display: none;
+  }
+}
+
+select::-ms-expand {
+  display: none;
+}

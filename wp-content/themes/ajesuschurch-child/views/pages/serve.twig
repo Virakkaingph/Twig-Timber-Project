@@ -1,0 +1,51 @@
+
+{% extends 'layout.twig' %}
+{% block content %}
+
+<section class="container copy">
+    {{ page.content }}
+</section>
+
+<section class="container church-staff final">
+    <h2>Our Staff</h2>
+    <ul class="grid staff-members">
+        {% for member in staff_members %}
+          {% if not member.guest_speaker %}
+            <li class="grid-cell member">
+
+              {% if member.thumbnail.src %}
+                <img src="{{ member.thumbnail.src('square-thumb') }}" alt="Photo of {{ member.title }}" />
+              {% else %}
+                <img src="{{ fn('assets_url') }}/images/gray.png" width="300" height="300" />
+              {% endif %}
+
+              <div class="detail">
+                  <h3>{{ member.title }}</h3>
+                  {% if member.church_title %}<p>{{ member.church_title }}</p>{% endif %}
+                  <p>{{ member.job_title }}</p>
+                  <p class="social">
+                      {% if member.email %}{{ fn('email_link', member.email, '&#xe024;', '', 'mono-icon') }}{% endif %}
+                      {% if member.facebook_page %}<a href="{{ member.facebook_page }}" class="mono-icon" target="_blank">&#xe027;</a>{% endif %}
+                      {% if member.twitter_page %}<a href="{{ member.twitter_page }}" class="mono-icon" target="_blank">&#xe087;</a>{% endif %}
+                  </p>
+              </div>
+            </li>
+
+
+          {% endif %}
+        {% else %}
+          <li class="none">
+            <div class="inner">No staff members</div>
+          </li>
+
+
+
+        {% endfor %}
+    </ul>
+
+<p class="page-actions">
+          <a href="http://ajesuschurch.org/staff" class="btn" target="_blank">Shared Services Staff</a>
+    </p>
+</section>
+
+{% endblock %}

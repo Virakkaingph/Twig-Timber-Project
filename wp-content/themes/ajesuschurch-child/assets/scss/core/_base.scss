@@ -1,0 +1,149 @@
+/******************************************************************
+Site Name: A Jesus Church
+Author: Belief
+
+Stylesheet: Base Mobile Stylesheet
+
+Be light and don't over style since everything here will be
+loaded by mobile devices. You want to keep it as minimal as
+possible. This is called at the top of the main stylsheet
+and will be used across all viewports.
+
+******************************************************************/
+
+/*********************
+GENERAL STYLES
+*********************/
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+.container {
+  $outer-gutter: 22px;
+  @include mobile-gutters($outer-gutter);
+  @include clearfix;
+}
+
+.chromeframe {
+  margin: 0.2em 0;
+  padding: 0.2em 0;
+  background: $light-gray;
+  color: $black;
+}
+
+#content {
+  min-height: 350px; // 520
+  .page-actions {
+    margin-top: 1.5em;
+    // With button margin = 1.5em
+    margin-bottom: 0.45em;
+    a {
+      @include button;
+      margin-right: 1em;
+    }
+  }
+  .gap, .final {
+    margin-bottom: 2em;
+  }
+  .more-gap {
+    margin-bottom: 4em;
+  }
+}
+
+/*********************
+RESPONSIVE IMAGES
+*********************/
+
+img {
+  vertical-align: middle;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+@media \0screen {
+  img {
+  	width: auto; /* ie 8 */
+  }
+}
+
+/*********************
+PHONE WIDTH
+*********************/
+
+@include media($small) {
+  .container {
+    @include mobile-gutters(30px);
+  }
+  #content {
+    .more-gap {
+      margin-bottom: 4.5em;
+    }
+  }
+}
+
+/*********************
+TABLET WIDTH
+*********************/
+
+@include media($medium) {
+  #content {
+    .page-actions a {
+      @include large-button;
+    }
+  }
+}
+
+/*********************
+DESKTOP WIDTH
+*********************/
+
+@include media($large) {
+  .container {
+    // width: 77%;
+    @include outer-container;
+    //width: $max-width;
+    //margin: 0 auto;
+  }
+}
+
+/*********************
+ALERTS & NOTICES
+*********************/
+
+%alert {
+  margin: 10px;
+  padding: 5px 18px;
+  border: 1px solid;
+}
+
+.alert-notice {
+  @extend %alert;
+  border-color: darken($notice-color, 5%);
+  background: $notice-color;
+}
+
+.alert-info {
+  @extend %alert;
+  border-color: darken($info-color, 5%);
+  background: $info-color;
+}
+
+.alert-error {
+  @extend %alert;
+  border-color: darken($error-color, 5%);
+  background: $error-color;
+}
+
+.alert-success {
+  @extend %alert;
+  border-color: darken($success-color, 5%);
+  background: $success-color;
+}

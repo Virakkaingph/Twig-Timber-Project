@@ -1,0 +1,122 @@
+/******************************************************************
+Site Name: A Jesus Church
+Author: Brant Watrous
+
+Stylesheet: Mixins & Constants Stylesheet
+
+This is where you can take advantage of Sass' great features:
+Mixins & Constants. I won't go in-depth on how they work exactly,
+there are a few articles below that will help do that. What I will
+tell you is that this will help speed up simple changes like
+changing a color or adding CSS3 techniques gradients.
+
+******************************************************************/
+
+
+
+
+/*********************
+TEXT STYLES
+*********************/
+
+@mixin reset-text() {
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  line-height: $base-scale;
+}
+
+@mixin navbar-effect() {
+  @include transition(all 0.6s ease-out);
+  &:hover {
+    @include opacity(0.71);
+    @include transform(translate(2px, 0));
+  }
+}
+
+/*********************
+ELEMENT STYLES
+*********************/
+
+@mixin button($bg: transparent) {
+  display: inline-block;
+  // padding: 0.74em 1.0em;
+  // font-size: $base-font-size - 2px;
+  padding: 0.71em 1.05em;
+	background-color: $bg;
+	color: $btn-color-primary;
+  font-family: $helvetica;
+  font-weight: bold;
+  font-size: $base-font-size - 1px;
+  text-decoration: none;
+	text-transform: uppercase;
+  border: 2px solid $btn-color-primary;
+  margin-bottom: 1.05em;
+  @include no-hyphens;
+  &:hover {
+    text-decoration: none;
+    color: $white;
+    background-color: $gray;
+    border-color: $gray;
+  }
+}
+
+@mixin large-button() {
+  padding: 0.72em 1.1em;
+  font-size: $base-font-size;
+}
+
+@mixin white-button($bg: transparent) {
+  background-color: $bg;
+  color: $white;
+  border-color: $white;
+  &:hover {
+    background-color: rgba(255,255,255,0.2);
+  }
+}
+
+/*********************
+IMAGE BACKGROUNDS
+*********************/
+
+@mixin photo-standin() {
+  background-color: #999;
+  // box-shadow: inset 0px 0px 200px rgba(0,0,0,0.167);
+}
+
+@mixin tile-background() {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  @include photo-standin;
+}
+
+@mixin hero-background() {
+  background-color: #999;
+  background-repeat: no-repeat;
+  background-position: center center; // center top
+  background-size: cover;
+}
+
+/*********************
+TILED GRID
+*********************/
+
+@mixin overlay-effect() {
+  a {
+    display: block;
+    position: relative;
+    &:before {
+      display: block;
+      @include overlay;
+      content: "";
+      background-color: rgba(0, 0, 0, 0.175);
+      @include opacity(0);
+      z-index: 1;
+    }
+    &:hover {
+      &:before {
+        @include opacity(1);
+      }
+    }
+  }
+}

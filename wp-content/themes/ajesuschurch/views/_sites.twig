@@ -1,0 +1,16 @@
+
+{% for site in sites %}
+  <li class="site-{{ site.blog_id }}" {{ fn('set_bg', site.tile_image) }}>
+    <a href="{{ site.url }}">
+      <div class="inner">
+          <span class="mark">&amp;</span>
+          <span class="name">{{ site.name }}</span>
+          <span class="location">{{ site.location }}</span>
+      </div>
+    </a>
+  </li>
+{% else %}
+  <li class="none">
+    <div class="inner">No churches</div>
+  </li>
+{% endfor %}

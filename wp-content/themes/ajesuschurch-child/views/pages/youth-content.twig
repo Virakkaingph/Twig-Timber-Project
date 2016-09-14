@@ -1,0 +1,19 @@
+{% extends 'layout.twig' %}
+
+{% block hero %}
+<section class="container youth-title">
+    <h1><a href="http://westside.ajesuschurch.org/youth">Westside Youth</a></h1>
+</section>
+{% endblock %}
+
+{% block content %}
+
+
+
+<section class="container copy final">
+    {{ page.content }}
+</section>
+{{ fn('church_youth_menu') }}
+
+
+{% endblock %}

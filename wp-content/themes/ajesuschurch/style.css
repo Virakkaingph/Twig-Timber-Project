@@ -1,0 +1,15 @@
+/*
+Theme Name: AJC Network Theme
+Theme URI: http://www.ajesuschurch.org
+Description: Network theme for A Jesus Church.
+Author: Belief
+Author URI: http://www.beliefagency.com
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: Tags: fluid-layout, responsive-layout, translation-ready
+Text Domain: ajc
+*/
+.filter-select:first-child {
+  display: none !important;
+}

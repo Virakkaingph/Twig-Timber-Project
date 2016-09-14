@@ -1,0 +1,167 @@
+
+// Allows tile to scale vertically and inner to remain
+// centered using http://codepen.io/LFeh/pen/LFHBG
+@mixin menu-tile() {
+  position: relative;
+  @include no-hyphens;
+  a, .outer {
+    display: block;
+    height: 12em; // NOTE: Constant height
+    line-height: 1.5;
+    text-decoration: none;
+    text-align: center;
+    overflow: hidden;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .inner {
+    @include center-vertically;
+    width: 100%;
+    z-index: 2;
+  }
+  span {
+    display: block;
+    font-weight: bold;
+  }
+}
+
+// Mixin for graphical tile menus
+@mixin grid-menu() {
+  li {
+    @include tile-background;
+    @include menu-tile;
+    a, .outer {
+      // padding: 10em 4em;
+      background: $photo-filter;
+    }
+    /*span {
+      position: relative;
+      z-index: 2;
+    }*/
+  }
+}
+
+@mixin large-tiles() {
+  background-color: #2f3131;
+  li {
+    @include overlay-effect;
+    a, .outer {
+      height: 24em; // NOTE: Constant height
+      // display: block;
+      // padding: 8em 4em;
+      // line-height: 1.5;
+    }
+    a, a:hover {
+      color: $white;
+    }
+    .name {
+      font-size: 1.625em;
+      font-weight: 500;
+    }
+  }
+  @include media(max-width 419px 6) {
+    li {
+      a, .outer {
+        height: 17.25em !important; // NOTE: Override dynamic grid plugin
+      }
+    }
+  }
+  @include media($medium) {
+    li .name {
+      font-size: 2em;
+    }
+  }
+}
+
+@mixin small-tiles() {
+  background-color: #f1f1f0;
+  li {
+    @include overlay-effect;
+    a, .outer {
+      height: 17.25em; // NOTE: Constant height
+      // display: block;
+      // padding: 6.5em 3em;
+      // line-height: 1.5;
+    }
+    a, a:hover {
+      color: $white;
+    }
+    .name {
+      font-size: 1.67em;
+      font-weight: 500;
+    }
+  }
+  @include media($medium) {
+    li {
+      a, .outer {
+        height: 20em; // NOTE: Constant height
+      }
+    }
+  }
+}
+
+/*********************
+COLLAPSED GRID
+*********************/
+
+// Use with tile-columns()
+.collapsed-grid {
+  @extend %structural-list;
+  @include tile-container;
+  @include clearfix;
+}
+
+// Use with tile-columns()
+.grid-menu {
+  @extend %structural-list;
+  @include tile-container;
+  @include grid-menu;
+  @include large-tiles;
+  @include clearfix;
+}
+
+// Use with tile-columns()
+.grid-menu-small {
+  @extend %structural-list;
+  @include tile-container;
+  @include grid-menu;
+  @include small-tiles;
+  @include clearfix;
+}
+
+/*********************
+GUTTERED GRID
+*********************/
+
+// Use with Neat's span-columns(), omega()
+.grid {
+  @extend %structural-list;
+  // NOTE: This should be used, but only in
+  // the case the grid is wrapped by a container
+  @include outer-container;
+  @include clearfix;
+}
+
+/*********************
+TABLETS / DESKTOP
+*********************/
+
+@include media($small) {
+  .grid-menu li {
+     @include tile-columns(2);
+  }
+  .grid-menu-small li {
+    @include tile-columns(2);
+  }
+}
+
+/*********************
+DESKTOP WIDTH
+*********************/
+
+@include media($large) {
+  .grid-menu-small li {
+    @include tile-columns(4);
+  }
+}

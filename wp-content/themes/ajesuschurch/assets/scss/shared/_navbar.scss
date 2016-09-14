@@ -1,0 +1,176 @@
+
+/*********************
+NAVIGATION STYLES
+*********************/
+
+/*
+All navs have a .nav class applied via
+the wp_menu function; this is so we can
+easily write one group of styles for
+the navs on the site so our css is cleaner
+and more scalable.
+*/
+
+nav ul {
+	@extend %structural-list;
+}
+
+nav, .nav {
+	// @include clearfix;
+}
+
+#menu {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding-top: 9em; // 8.33
+	z-index: 999;
+	overflow: scroll;
+	backface-visibility: hidden;
+	z-index: -1;
+}
+
+.top-nav {
+	// @include transition(opacity 0.25s);
+	@include opacity(0);
+	li {
+		line-height: 2.67em;
+		@include navbar-effect;
+		a {
+			display: block;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 28px;
+			color: $black;
+
+			/*
+			Remember this is for mobile ONLY, so there's no need
+			to even declare hover styles here, you can do it in
+			the style.scss file where it's relevant. We want to
+			keep this file as small as possible!
+			*/
+			&:hover, &:focus {
+				// color: $text-accent-color;
+			}
+
+		}
+
+		&:first-child a {
+			border: none;
+		}
+
+		/*
+		You really have to rethink your dropdowns for mobile.
+		you don't want to have it expand too much because the
+		screen is so small. How you manage your menu should
+		depend on the project. Here's some great info on it:
+		http://www.listapart.com/articles/organizing-mobile/
+		*/
+		ul.sub-menu,
+		ul.children {
+
+			li {
+				a {
+					padding-left: 2em;
+
+					&:hover,
+					&:focus {}
+
+					&:link {}
+				}
+
+				&:first-child {}
+				&:last-child {}
+			}
+
+		}
+
+	}
+
+	/* Highlight current page */
+	li.current-menu-item,
+	li.current_page_item,
+	li.current-page-ancestor {
+		a {
+			// color: $text-accent-color;
+		}
+	}
+
+}
+
+/*********************
+MOBILE WIDTH
+*********************/
+
+@include media($upto-medium) {
+  .menu-open {
+    /*.mobile-drawer {
+      z-index: 999;
+      opacity: 1;
+    }*/
+    #menu {
+      display: block;
+      bottom: 0;
+      z-index: 999;
+    }
+    .top-nav {
+    	@include opacity(1);
+    }
+    #hero, #content, #footer {
+      display: none;
+    }
+  }
+}
+
+/*********************
+TABLET WIDTH
+*********************/
+
+@include media($medium) {
+	#menu {
+		display: block;
+		position: relative; // static
+		float: right;
+		text-align: right;
+		padding: 0;
+		width: 50%;
+		background: none;
+		overflow: visible;
+		z-index: 1003;
+		.container {
+			min-width: auto;
+			margin: 0;
+		}
+	}
+	.top-nav {
+		border-bottom: 0;
+		margin-top: 1.5em;
+		@include opacity(1);
+		li {
+			display: inline-block;
+			padding-left: 1.05em;
+			line-height: $header-height;
+			a {
+				font-size: 15px;
+			}
+		}
+	}
+}
+
+/*********************
+DESKTOP WIDTH
+*********************/
+
+@include media($large) {
+	/*.top-nav {
+		li {
+			display: inline;
+			a {
+				display: inline-block;
+				border: none;
+			}
+		}
+	}*/
+}

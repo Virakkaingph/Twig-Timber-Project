@@ -1,0 +1,78 @@
+
+/*********************
+STAFF MEMBERS
+*********************/
+
+.church-staff {
+  border-top: 2px solid $light-gray;
+}
+
+.staff-members {
+  li {
+    margin-bottom: 1.5em;
+  }
+  img {
+    margin-bottom: 0.67em;
+  }
+  h3, p, div {
+    margin: 0;
+    font-size: $base-font-size;
+    // line-height: 1.85em;
+  }
+  h3 {
+    @include no-hyphens;
+  }
+  .detail {
+    p, div {
+      display: block;
+      margin: 0;
+    }
+  }
+  .social a {
+    display: inline-block;
+    font-size: 29px;
+    line-height: 22px;
+    height: 24px;
+    width: 24px;
+    margin-left: -5px;
+  }
+}
+
+/*********************
+TABLET WIDTH
+*********************/
+
+@include media($below-medium) {
+  .staff-members {
+    li {
+      @include span-columns(3);
+      @include omega(2n);
+      .detail {
+        // height: 9.5em; // NOTE: Constant height
+      }
+    }
+  }
+}
+
+/*********************
+DESKTOP WIDTH
+*********************/
+
+@include media($medium) {
+  .staff-members {
+    li {
+      @include span-columns(4);
+      @include omega(3n);
+      .detail {
+        // height: 8em; // NOTE: Constant height
+      }
+    }
+    .social a {
+      font-size: 27px;
+      line-height: 21px;
+      height: 21px;
+      width: 21px;
+      margin-left: -6px;
+    }
+  }
+}

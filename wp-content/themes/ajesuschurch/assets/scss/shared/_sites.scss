@@ -1,0 +1,35 @@
+
+/*********************
+LARGE SITE TILES
+*********************/
+
+.sites {
+  li {
+    a {
+      // padding: 8em 4em;
+    }
+    .mark {
+      width: 100%;
+      font-size: 3em;
+      line-height: 1;
+    }
+  }
+}
+
+/*********************
+SMALL SITE TILES
+*********************/
+
+.sites-small {
+  margin-top: 1.75em;
+  li {
+    a {
+      // padding: 6.5em 3em;
+    }
+    .mark {
+      width: 100%;
+      font-size: 2.5em;
+      line-height: 1;
+    }
+  }
+}

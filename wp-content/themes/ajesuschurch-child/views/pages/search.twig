@@ -1,0 +1,15 @@
+
+{% extends 'layout.twig' %}
+
+{% block content %}
+<ul class="results">
+  {% for post in posts %}
+    <li>
+        <a href="{{ post.permalink }}">{{ post.title }}</a>
+        {{ fn('truncated_content') }}
+    </li>
+  {% else %}
+    <li>Nothing matched</li>
+  {% endfor %}
+</ul>
+{% endblock %}

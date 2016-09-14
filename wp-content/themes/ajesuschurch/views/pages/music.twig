@@ -1,0 +1,35 @@
+
+{% extends 'layout.twig' %}
+{% block content %}
+
+<section class="container copy">
+    {{ page.content }}
+</section>
+
+<section class="container final">
+  <ul id="releases" class="grid release-tiles">
+    {% for release in releases %}
+      <li class="grid-cell release-{{ release.id }}">
+        <div class="cover-art">
+          {% if release.album_art %}
+            <a href="{{ release.itunes_url }}"><img src="{{ fn('img_src', release.album_art, 'square-thumb') }}" alt="Artwork for {{ release.title }}" /></a>
+          {% else %}
+            <img src="{{ fn('assets_url') }}/images/gray.png" width="300" height="300" />
+          {% endif %}
+        </div>
+        <div class="detail">
+          <p class="title">{{ release.title }}</p>
+          {% if release.more_info %}<div class="more">{{ fn('nl2br', release.more_info) }}</div>{% endif %}
+          <p class="purchase">
+            {% if release.itunes_url %}<a href="{{ release.itunes_url }}" title="Learn More">Learn More</a> {% if release.amazon_url %}/{% endif %}{% endif %}
+            {% if release.amazon_url %}<a href="{{ release.amazon_url }}" title="Purchase at Amazon" target="_blank">Amazon</a>{% endif %}
+          </p>
+        </div>
+      </li>
+    {% else %}
+      <li class="none">No music</li>
+    {% endfor %}
+  </ul>
+</section>
+
+{% endblock %}

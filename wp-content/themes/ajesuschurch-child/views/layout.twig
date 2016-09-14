@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html {{ language_attributes }} class="no-js">
+    <head>
+        {% include '_meta.twig' %}
+        {% include '_tracking.twig' %}
+        {% block head %}
+        {% endblock %}
+        
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    </head>
+    <body class="{{ body_class }} church-theme fg-{{ foreground }}" data-source="layout.twig">
+
+        <!--[if lt IE 8]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please
+            <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <header class=" header {{hero_header}} {{ darken_header }}" {{ header_bg }}>
+
+            {% block header %}
+            <div class="container">
+                {% include '_header.twig' %}
+            </div>
+            {% endblock %}
+            {% block hero %}
+                {% include '_hero.twig' %}
+            {% endblock %}
+
+        </header>
+        <section id="content" role="main" class="content-wrapper">
+            <div class="{{ sidebar_class }}">
+                {% block content %}
+                    No content
+                {% endblock %}
+            </div>
+        </section>
+
+        <footer id="footer">
+            <div class="container">
+                {% include '_footer.twig' %}
+            </div>
+        </footer>
+
+        {% include '_vimeo.twig' %}
+        {% block body %}
+        {% endblock %}
+        {{ fn('jquery_cdn_with_fallback') }}
+        {{ fn('wp_footer') }}
+    </body>
+</html>

@@ -1,0 +1,30 @@
+
+/*********************
+DOCTRINE
+*********************/
+
+#doctrine {
+  margin-top: 3.5em;
+  .page-actions {
+    margin-bottom: 2em;
+  }
+}
+
+/*********************
+TABLET WIDTH
+*********************/
+
+@include media($medium) {
+  .primer {
+    @include column-count(2);
+    @include column-gap(3%);
+  }
+}
+
+/*********************
+DESKTOP WIDTH
+*********************/
+
+@include media($large) {
+
+}

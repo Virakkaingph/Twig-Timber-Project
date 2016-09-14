@@ -1,0 +1,219 @@
+
+/*********************
+BASE STYLES
+*********************/
+
+body {
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  line-height: $base-scale;
+  color: $base-text-color;
+  @include antialias;
+}
+
+/*********************
+SELECTION STYLES
+*********************/
+
+::-moz-selection {
+    background: $selection-color;
+    text-shadow: none;
+}
+
+::selection {
+    background: $selection-color;
+    text-shadow: none;
+}
+
+/*********************
+LINK STYLES
+*********************/
+
+a {
+  color: $link-color;
+
+  /* on hover */
+  &:hover, &:focus {
+    color: $link-hover;
+  }
+
+  /* on click */
+  &:active {
+    color: $link-hover;
+  }
+
+  /* mobile tap color */
+  &:link {
+    /*
+    This highlights links on iPhones/iPads.
+    so it basically works like the :hover selector
+    for mobile devices.
+    */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.btn {
+  @include button;
+}
+
+.invert-text, .light {
+  .btn {
+    @include white-button;
+  }
+}
+
+p + .btn {
+  margin-top: 0.25em;
+}
+
+@include media($medium) {
+  .btn {
+    @include large-button;
+  }
+}
+
+/******************************************************************
+HEADING STYLES
+******************************************************************/
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+  font-family: $header-font-family;
+  font-weight: 700;
+  color: $black;
+  @include antialias;
+  /*
+  If you're going to use webfonts, be sure to check your weights
+  http://css-tricks.com/watch-your-font-weight/
+  */
+
+  /* Remove text decoration for all headline links */
+  a {
+    text-decoration: none;
+    color: $black;
+  }
+}
+
+h1, .h1 {
+  font-size: 26px; // 2.0em;
+  line-height: 1.56em;
+}
+
+h2, .h2 {
+  font-size: 26px; // 1.45em;
+  line-height: 1.4em;
+}
+
+h3, .h3 {
+  font-size: 24px; // 1.333em;
+}
+
+h4, .h4 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+h5, .h5 {
+  font-size: 17px;
+  // line-height: 2.09em;
+}
+
+/*********************
+OTHER ELEMENTS
+*********************/
+
+strong {
+  &.more {
+    font-size: 1.1em;
+  }
+}
+
+hr {
+  @include hr(2px, $dark-gray);
+}
+
+.delim {
+  font-weight: normal;
+  margin: 0 0.18em;
+}
+
+.img-link {
+  display: block;
+}
+
+.none {
+  margin: 2em 0;
+  // font-size: 18px;
+  font-weight: bold;
+}
+
+/*********************
+CONTENT TEXT STYLES
+*********************/
+
+/*p, ul, ol, dl, blockquote {
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  hyphens: none;
+}*/
+
+.copy {
+  font-family: $serif;
+  font-size: 18px;
+  line-height: 1.67;
+  color: $dark-gray;
+  h1, h2, h3 {
+    font-size: 22px;
+    margin-bottom: 0.33em;
+  }
+  h1, h2, h3, h4, h5 {
+    margin-top: 1.67em;
+  }
+  h1 + p {
+    margin-top: 0;
+  }
+  // Larger breaks above headers
+  /*p + h2, p + h3,
+  ol + h2, ol + h3,
+  ul + h2, ul + h3 {
+    margin-top: 1.5em;
+  }*/
+}
+
+.copy ol, .post ol {
+  list-style-type: decimal;
+  padding: 0 0 0 1.25em;
+}
+
+.copy ul, .post ul {
+  list-style-type: disc;
+  padding: 0 0 0 1.25em;
+}
+
+.invert-text, .light {
+  color: $white;
+  h1, h2, h3, h4, h5 {
+    color: $white;
+  }
+}
+
+.pipe {
+  padding: 0 0.2em;
+}
+
+/*********************
+TABLET SIZE
+*********************/
+
+@include media($small) {
+  font-size: 19px;
+  .copy {
+    h1, h2, h3 {
+      font-size: 24px; // 1.33em
+      margin-bottom: 0.33em;
+    }
+    h1, h2, h3, h4, h5 {
+      margin-top: 2em;
+    }
+  }
+}

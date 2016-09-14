@@ -1,0 +1,13 @@
+
+<ul id="events" class="grid event-tiles">
+  {% for event in upcoming_events %}
+    {% include '_event.twig' %}
+  {% endfor %}
+  {% for event in standing_events %}
+    {% include '_event.twig' %}
+  {% endfor %}
+</ul>
+
+{% if not has_events %}
+  <p class="none final">No events</p>
+{% endif %}

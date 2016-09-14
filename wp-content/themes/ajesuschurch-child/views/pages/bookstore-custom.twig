@@ -1,0 +1,43 @@
+
+{% extends 'layout.twig' %}
+{% block content %}
+<section class="container copy final">
+
+	{% set sectionitems = post.get_field('bookstore_section') %}
+	{% if sectionitems %}
+		{%for sectionitem in sectionitems %}
+
+		<h1 >{{sectionitem.section_title}}</h1>
+
+			{% set books = sectionitem.book %}
+
+			{% if books %}                                        
+				{% for book in books %}
+					<div class="content-column one_third">
+						 <div style="padding-right:25px;">
+							 <p>
+								 <a href='{{book.amazon_link}}'><img class = 'image' src="{{TimberImage(book.book_cover).src}}" alt=""></a>
+								 <br>
+								<h8> {{book.book_title}} </h8>
+								 <br>
+								 <h9>
+									by {{book.author}}
+									<br>
+									{{book.description}}
+								 </h9>
+							 </p>
+						 </div>
+					</div>								
+				 {% endfor %}
+				 <div class="clear_column"></div>
+				 <p></p>
+				 <hr></hr>
+			{% endif %}
+			
+		{% endfor %}
+	{% else %}
+		{{ page.content }}
+	{% endif %}
+
+</section>
+{% endblock %}

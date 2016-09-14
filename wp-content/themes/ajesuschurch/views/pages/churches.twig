@@ -1,0 +1,13 @@
+
+{% extends 'layout.twig' %}
+{% block content %}
+
+<section class="container copy">
+    {{ page.content }}
+</section>
+
+<ul id="churches" class="grid-menu sites">
+    {% include '_sites.twig' %}
+</ul>
+
+{% endblock %}

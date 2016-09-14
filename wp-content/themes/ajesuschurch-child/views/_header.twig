@@ -1,0 +1,17 @@
+
+<section class="header-bar">
+    <div class="header-bar-border"></div>
+
+    <h2 class="logo" role="banner">
+        <a href="{{ site.url }}" rel="home">
+            <span class="mark">&nbsp;</span>
+            <span class="title">{{ site.name }}</span>
+        </a>
+    </h2>
+
+    <nav id="menu" class="clearfix" role="navigation">
+        <div class="container">{{ fn('church_main_nav') }}</div>
+    </nav>
+
+    <a href="{{ nowhere }}" class="menu-switch"><span></span></a>
+</section>

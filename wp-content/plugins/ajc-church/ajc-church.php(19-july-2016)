@@ -1,0 +1,70 @@
+<?php
+/*
+  Plugin Name: AJC Church Plugin
+  Plugin URI: http://wordpress.org/extend/plugins/ajc-church/
+  Description:Add church site functionality to all A Jesus Church sites.
+  Version: 1.0.0
+  Author: Belief
+  Author URI: http://beliefagency.com/
+  License: GPLv2
+ */
+
+/************* PLUGIN FILES ***************/
+
+add_action( 'after_setup_theme', function () {
+
+	// Include plugin code
+	require_once( 'lib/post-types.php' );
+	require_once( 'lib/custom-fields.php' );
+	require_once( 'lib/menus.php' );
+
+}, 1 );
+
+/************* SIDEBAR MENU *******************/
+
+// Edit the admin side menu
+add_action('admin_menu', function() {
+	// Hide Posts
+	if (function_exists( 'remove_menu_page' )) {
+		remove_menu_page( 'edit.php' );
+	}
+	// Shortcut to Ministries
+	if (function_exists( 'add_menu_page' )) {
+		add_menu_page( 'Ministries', 'Ministries', 'edit_posts', 'edit-tags.php?taxonomy=ministry&post_type=event', '', '', 8 );
+	}
+}, 100 );
+
+/************* ADMIN TOOLBAR *******************/
+
+// Remove new post from the WP Toolbar
+add_action( 'wp_before_admin_bar_render', function() {
+	global $wp_admin_bar;
+
+	// Remove Post from New menu
+	$wp_admin_bar->remove_node( 'new-post' );
+}, 7 );
+
+/************* ADMIN TAXONOMIES *******************/
+
+// Hide description field for ministries
+add_action( 'admin_footer-edit-tags.php', function () {
+	global $current_screen;
+	switch ( $current_screen->id ) {
+		case 'edit-teaching_series':
+		case 'edit-ministry':
+			// WE ARE AT /wp-admin/edit-tags.php?taxonomy=ministry
+			// OR AT /wp-admin/edit-tags.php?action=edit&taxonomy=ministry&tag_ID=1&post_type=event
+			?><script type="text/javascript">
+				jQuery(document).ready( function($) {
+					$('#tag-description').parent().remove();
+					$('#description').parent().parent().remove();
+				});
+				</script>
+			<?php
+			break;
+		case 'edit-post_tag':
+			// WE ARE AT /wp-admin/edit-tags.php?taxonomy=post_tag
+			// OR AT /wp-admin/edit-tags.php?action=edit&taxonomy=post_tag&tag_ID=3&post_type=post
+			break;
+	}
+} );

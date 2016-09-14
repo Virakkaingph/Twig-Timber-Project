@@ -1,0 +1,208 @@
+
+/*********************
+NEWSLETTER FORM
+*********************/
+
+.church-theme #footer {
+  .newsletter {
+    // MailChimp for WordPress
+    .mc4wp-form {
+      display: inline-block;
+      position: relative;
+      width: 276px;
+      margin-top: 3em;
+      padding-top: 0.25em;
+      .mc4wp-message {
+        text-align: left;
+        margin: 0;
+        margin-top: 0.57em;
+        padding-right: 1em;
+      }
+      .mc4wp-alert {
+        text-align: left;
+        color: $dark-gray;
+        a { color: $medium-gray; }
+      }
+      .mc4wp-error {
+        color: #A93520;
+        a { color: #f35342; }
+      }
+      .mc4wp-success {
+        color: #3f9309;
+        a { color: #3f9309; }
+      }
+      // Hide label except for screen readers
+      label {
+        display: none;
+      }
+      input[type="email"],
+      input[type="submit"] {
+        position: relative;
+        padding: 0;
+        @include text-height(37px);
+        vertical-align: top;
+        font-size: 14px;
+        color: $black;
+        background-color: $white;
+        border: none;
+      }
+      input[type="email"] {
+        @include border-left-radius(1px);
+        padding-left: 14px;
+        width: 240px; // 240
+      }
+      input[type="submit"] {
+        @include border-right-radius(1px);
+        border-left: 1px solid #d2d2d2;
+        @include hide-button-text;
+        // @include svg-background;
+        width: 35px;
+        &:hover {
+          background-color: #e9e8e8;
+        }
+      }
+    }
+
+    // Submit icon
+    .mc4wp-form:after {
+      display: block;
+      position: absolute;
+      top: 18px;
+      right: 14px;
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 5px 0 5px 7px;
+      border-color: transparent transparent transparent $dark-gray;
+    }
+
+    // Successful submission
+    .mc4wp-form-success {
+      .mc4wp-error {
+        display: none;
+      }
+      input[type="submit"] {
+        @include svg-background("check", $white);
+        background-size: 15px;
+      }
+      &:after {
+        display: none !important;
+      }
+    }
+
+    // Submit icon states (AJAX)
+    /*&.init .mc4wp-form:after {
+      display: block;
+      position: absolute;
+      top: 18px;
+      right: 15px;
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 5px 0 5px 7px;
+      border-color: transparent transparent transparent $dark-gray;
+    }
+    &.working input[type="submit"] {
+      background-image: url(../images/loading.gif);
+      background-size: 17px;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+    &.complete input[type="submit"] {
+      @include svg-background("check", $white);
+      background-size: 15px;
+    }*/
+  }
+}
+
+/*********************
+CHURCH FOOTER
+*********************/
+
+.church-theme #footer {
+
+  .social-links {
+    text-align: left;
+    margin-top: 3.25em;
+    margin-left: -0.5em;
+  }
+
+  /*
+  If you checked out the link above:
+  http://alistapart.com/articles/organizing-mobile/
+  you'll want to style the footer nav
+  a bit more in-depth. Remember to keep
+  it simple because you'll have to
+  override these styles for the desktop
+  view.
+  */
+  .footer-nav {
+    a {
+      text-decoration: none;
+      color: $off-white;
+      &:hover {
+        color: $white-hover;
+      }
+    }
+  }
+
+  section:last-child {
+    padding-top: 2.33em;
+  }
+
+}
+
+/*********************
+TABLETS / DESKTOP
+*********************/
+
+@include media($small) {
+  .church-theme #footer {
+    .newsletter {
+      .mc4wp-form {
+        width: 292px;
+        input[type="email"] {
+          width: 256px;
+        }
+      }
+    }
+  }
+}
+
+/*********************
+DESKTOP WIDTH
+*********************/
+
+@include media($large) {
+
+  .church-theme #footer {
+    .newsletter {
+      .mc4wp-form {
+        margin-top: 0;
+        .mc4wp-message {
+          margin-top: 1.33em;
+        }
+      }
+    }
+    .contact {
+      @include span-columns(3);
+    }
+    .footer-nav {
+      @include span-columns(3);
+      li {
+        padding-left: 1em;
+      }
+    }
+    .newsletter {
+      text-align: right;
+      @include span-columns(6);
+      @include omega;
+    }
+    section:last-child {
+      padding-top: 4em;
+    }
+  }
+
+}

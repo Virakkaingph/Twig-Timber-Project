@@ -1,0 +1,26 @@
+
+{% if hero_graphic %}
+
+  {% if hero_font_size %}
+    <style>
+    @media screen and (min-width: 1000px) {
+      .hero-text .hero-message { font-size: {{ hero_font_size }}px; }
+    }
+    </style>
+  {% endif %}
+<div id="hero" class="container hero hero-text">
+    <div class = 'hero-control'>
+      <p class="hero-message">{{ hero_phrase }}</p>
+      <p class="controls">
+        {% if hero_vimeo_id %}
+          <a href="#watch" class="btn watch">{{ watch_button_text }}</a>
+        {% endif %}
+        {% if hero_custom_url %}
+          <a href="{{hero_custom_url}}" class="btn watch">{{ custom_url_button }}</a>
+        {% endif %}
+      </p>
+    </div>
+</div>
+{% endif %}
+
+

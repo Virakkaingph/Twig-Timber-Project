@@ -1,0 +1,14 @@
+
+{% extends 'layout.twig' %}
+{% block content %}
+
+<section class="container copy">
+    <h1>{{ current_series.title }}</h1>
+    {{ current_series.content }}
+</section>
+
+<ul id="current-lessons" class="collapsed-grid lesson-tiles more-gap">
+    {% include 'teaching/_lessons.twig' %}
+</ul>
+
+{% endblock %}

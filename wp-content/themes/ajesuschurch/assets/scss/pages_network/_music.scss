@@ -1,0 +1,73 @@
+
+/*********************
+MUSIC RELEASES
+*********************/
+
+#releases {
+  margin-top: 1.5em;
+}
+
+.release-tiles {
+  li {
+    margin-bottom: 1.75em;
+    a {
+      color: $dark-gray;
+      //text-decoration: none;
+    }
+    .cover-art {
+      display: block;
+      margin-bottom: 0.67em;
+    }
+    .detail {
+      margin-bottom: 0.5em;
+      p, div, span {
+        display: block;
+        margin: 0;
+        font-size: 0.9em;
+        line-height: 1.6;
+      }
+    }
+    .title {
+      font-weight: bold;
+      color: $black;
+    }
+    .purchase {
+      color: $medium-gray;
+      a {
+        color: $medium-gray;
+      }
+    }
+  }
+}
+
+/*********************
+TABLET WIDTH
+*********************/
+
+@include media($below-medium) {
+  .release-tiles {
+    li {
+      @include span-columns(3);
+      @include omega(2n);
+      .detail {
+        // height: 9em; // NOTE: Constant height
+      }
+    }
+  }
+}
+
+/*********************
+DESKTOP WIDTH
+*********************/
+
+@include media($medium) {
+  .release-tiles {
+    li {
+      @include span-columns(4);
+      @include omega(3n);
+      .detail {
+        height: 7.67em; // NOTE: Constant height
+      }
+    }
+  }
+}

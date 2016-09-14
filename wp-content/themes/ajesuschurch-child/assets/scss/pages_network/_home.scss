@@ -1,0 +1,48 @@
+
+/*********************
+SMALL WIDTH
+*********************/
+
+@include media($small) {
+  /*.disciplines {
+    li {
+      width: 32.56%;
+    }
+  }*/
+}
+
+/*********************
+MEDIUM WIDTH
+*********************/
+
+@include media($medium) {
+  /*.disciplines {
+    li {
+      width: 24.5%;
+      margin-right: 0.5%;
+    }
+    .label {
+      width: 167px;
+      height: 3em;
+    }
+  }*/
+}
+
+/*********************
+DESKTOP WIDTH
+*********************/
+
+@include media($large) {
+  /*.disciplines {
+    li {
+      width: 19.5%;
+    }
+  }
+  .feature-entry {
+    @include span-columns(4);
+  }
+
+  .feature-thumb {
+    @include span-columns(4);
+  }*/
+}

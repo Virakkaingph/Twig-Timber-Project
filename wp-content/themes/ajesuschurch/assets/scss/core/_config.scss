@@ -1,0 +1,94 @@
+
+// Typography
+///////////////////////////////////////////////////////////////////////////////
+$sans-serif-header:         "Source Sans Pro", Helvetica, Arial, sans-serif;
+$sans-serif:                "Helvetica Neue", Arial, sans-serif;
+$serif:                     "Times New Roman", Times, serif; // "Georgia", Cambria
+$helvetica:                 "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$header-font-family:        $helvetica;
+$base-font-family:          $helvetica;
+
+
+// Sizes
+///////////////////////////////////////////////////////////////////////////////
+$base-scale:                1.57;
+$base-font-size:            15px;
+$base-line-height:          $base-font-size * $base-scale;
+$base-border-radius:        1px;
+
+
+// Colors
+///////////////////////////////////////////////////////////////////////////////
+$black:                     #030303;
+$white:                     #ffffff;
+$off-white:                 #dedede;
+$light-gray:                #c0c0c0;
+$medium-gray:               #aaaaaa;
+$gray:                      #7d7d7d;
+$dark-gray:                 #525252; // 333
+$translucent-white:         rgba(255, 255, 255, 0.5);
+$translucent-black:         rgba(44, 44, 44, 0.91);
+
+// Brand Colors
+$ajc-green:                 #5c8a95;
+$ajc-pink:                  #d984a5;
+$ajc-tan:                   #e0dcd4;
+$ajc-gray:                  #66686b;
+
+// Font Colors
+$base-text-color:           $dark-gray;
+$base-accent-color:         $ajc-green;
+$text-accent-color:         $ajc-green;
+$selection-color:           $ajc-tan;
+
+// Text Link Colors
+$link-color:                $black; // $ajc-green
+$link-hover:                lighten($dark-gray, 2.5%);
+$white-hover:               #d2d2d2;
+$btn-color-primary:         $black;
+$btn-color-primary-hover:   $link-hover;
+$btn-color:                 $medium-gray;
+$btn-color-hover:           lighten($medium-gray, 33%);
+
+// Border color
+$light-line-color:          $white;
+$dark-line-color:           $black;
+
+// Flash Colors
+$error-color:               #fbe3e4;
+$notice-color:              #ebe16f;
+$success-color:             #e6efc2;
+$info-color:                #d5edf8;
+
+
+// Common
+///////////////////////////////////////////////////////////////////////////////
+$light-line:                2px solid $light-line-color;
+$dark-line:                 2px solid $dark-line-color;
+$photo-filter:              rgba(32, 32, 32, 0.437); // 425
+
+
+// Measures
+////////////////////////////////////////////////////////////////////////////////
+$header-height:             52px;
+
+
+// Screen Sizes
+///////////////////////////////////////////////////////////////////////////////
+$base:              new-breakpoint(max-width 568px 6);
+$small:             new-breakpoint(min-width 569px 6);  // max-width 767px
+$below-medium:      new-breakpoint(min-width 569px max-width 768px 6);
+$upto-medium:       new-breakpoint(max-width 768px 6);
+$medium:            new-breakpoint(min-width 769px 12); // max-width 1024px
+$large:             new-breakpoint(min-width 977px 12); // min-width 1025px
+
+// Handheld devices
+// $mobile:            new-breakpoint(max-device-width 420px 1);
+// $mobile-retina:     new-breakpoint(max-device-width 420px min-resolution 326dpi 1);
+// $mobile-landscape:  new-breakpoint(max-device-width 960px orientation landscape 1);
+
+// Tablets
+// $tablet:            new-breakpoint(min-device-width 768px max-device-width 1024px 4);
+// $tablet-retina:     new-breakpoint(max-device-width 1024px min-resolution 264dpi 4);
+// $tablet-landscape:  new-breakpoint(max-device-width 1024px orientation landscape 4);

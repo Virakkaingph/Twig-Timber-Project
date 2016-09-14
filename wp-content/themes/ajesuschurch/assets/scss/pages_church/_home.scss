@@ -1,0 +1,109 @@
+
+/*********************
+HOME GRID
+*********************/
+
+.home-grid-menu {
+  display: none;
+  li {
+    .name { font-size: 2.25em; }
+  }
+}
+
+/*********************
+HOME SECTIONS
+*********************/
+
+.learn-more.copy,
+.location-info.copy {
+  // Normalize headers
+  h1, h2, h3 {
+    margin: 0.7em 0;
+  }
+  p, li {
+    //font-size: 20px;
+    //line-height: 1.5;
+    //color: $dark-gray;
+  }
+}
+
+.learn-more {
+  display: table;
+  @include clearfix;
+  padding-top: 3em;
+  padding-bottom: 2em;
+  .btn {
+    margin-top: 0.25em;
+  }
+  /*.row {
+    display: table-row;
+  }
+  .cell {
+    display: table-cell;
+    &:first-child {
+      width: 44%;
+      padding-right: 5%;
+    }
+    &:last-child {
+      width: 46%;
+      padding-left: 5%;
+      border-left: 1px solid $black;
+    }
+  }
+  .page-actions .cell {
+    padding-top: 1.5em;
+  }*/
+}
+
+.location-info,
+.upcoming-events {
+  border-top: 1px solid $black;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.upcoming-events {
+  margin-bottom: 0.25em; // 3em
+}
+
+.divider {
+  height: 0.25em;
+}
+
+/*********************
+TABLET WIDTH
+*********************/
+
+@include media($medium) {
+  .home-grid-menu {
+    display: block;
+  }
+  .learn-more {
+    .home-gather,
+    .home-scatter {
+      float: left;
+      width: 43%;
+    }
+    .divider {
+      float: left;
+      margin: 0 6.9%;
+      width: 0.2%;
+      border-left: 1px solid $black;
+      height: 18em;
+    }
+  }
+
+  .home-about,
+  .home-times,
+  .home-place {
+    @include span-columns(4);
+  }
+}
+
+/*********************
+DESKTOP WIDTH
+*********************/
+
+@include media($large) {
+
+}

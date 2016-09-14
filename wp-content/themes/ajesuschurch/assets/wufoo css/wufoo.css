@@ -1,0 +1,156 @@
+.wufoo .info h2 { 
+   display: none;
+}
+
+.wufoo .section h3 {
+    font-size: 130%;
+    font-family: helvetica;
+    font-style: bold;
+    font-weight: bold;
+    color: #000000;
+}
+
+.wufoo label.desc, .wufoo legend.desc {
+    font-size: 130%;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: normal;
+    line-height: 1.67;
+    color: #525252;
+    padding: 0 0 0 0;
+}
+
+.wufoo form li div label, form li span label {
+    margin: 0;
+    padding-top: 3px;
+    clear: both;
+    font-size: 110%;
+    font-family: "Times New Roman", Times, serif;
+    line-height: 160%;
+    color: #444;
+    display: block
+}
+
+.wufoo li div, .wufoo li span, .wufoo li div label, .wufoo li span label {
+    font-family: "Times New Roman", Times, serif;
+    color: #525252;
+}
+
+form li div label, form li span label {
+    margin: 0;
+    padding-top: 3px;
+    clear: both;
+    font-size: 120%;
+    line-height: 160%;
+    color: #525252;
+    display: block
+}
+
+.wufoo label.choice {
+    font-size: 130%;
+    font-family: "Times New Roman", Times, serif;
+    font-style: normal;
+    font-weight: normal;
+    color: #525252;
+}
+
+.wufoo .info, .wufoo .paging-context {
+    border-bottom: none;
+    padding: 0 0 0 0;
+}
+
+.wufoo .section h3, .wufoo .captcha, #payment .paging-context {
+    border-top: none;
+    padding: 30px 0 0 0;
+}
+
+.wufoo input, .wufoo textarea{
+  font-family: "Times New Roman",Times,serif;
+  padding: 0.72em 1.1em; 
+  border: solid 1px #000;
+  font-size: 1.1em; 
+  max-height: 180px;
+}
+
+.wufoo .left{
+float: left; 
+width: 50%;
+}
+
+.wufoo .right{
+float: right; 
+width: 50%;
+}
+
+
+.wufoo li.focused {
+   background: none !important;
+}
+
+
+input.btTxt {
+
+padding: 0.71em 1.05em;
+width: auto;
+overflow: visible;
+
+}
+
+/*********************
+SELECTION STYLES
+*********************/
+::-moz-selection {
+  background: #e0dcd4;
+  text-shadow: none; }
+
+::selection {
+  background: #e0dcd4;
+  text-shadow: none; }
+
+/*********************
+LINK STYLES
+*********************/
+a {
+  color: #030303;
+  /* on hover */
+  /* on click */
+  /* mobile tap color */ }
+  a:hover, a:focus {
+    color: #585858; }
+  a:active {
+    color: #585858; }
+  a:link {
+    /*
+    This highlights links on iPhones/iPads.
+    so it basically works like the :hover selector
+    for mobile devices.
+    */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3); }
+
+.btTxt {
+  display: inline-block;
+  padding: 0.71em 1.05em;
+  background-color: transparent;
+  color: #030303;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-weight: bold !important;
+  font-style: none !important;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 2px solid #030303 !important;
+  margin-bottom: 1.05em;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  hyphens: none; }
+
+
+.btTxt:hover {
+   background: #7d7d7d;
+   border-color: #7d7d7d !important;
+   color: #fff;
+}
+
+@media screen and (min-width: 769px) {
+  .btTxt {
+    padding: 0.72em 1.1em;
+    font-size: 15px; } }

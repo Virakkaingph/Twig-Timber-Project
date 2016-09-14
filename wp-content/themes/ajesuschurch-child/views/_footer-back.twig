@@ -1,0 +1,30 @@
+
+<section class="clearfix">
+    <div class="contact">
+        {{ fn('nl2br', settings.office_address) }}<br />
+        {{ settings.phone }}
+
+        <ul class="social-links">
+            {% if settings.facebook_url %}<li><a href="{{ settings.facebook_url }}" class="mono-icon" target="_blank">&#xe027;</a></li>{% endif %}
+            {% if settings.vimeo_url %}<li><a href="{{ settings.vimeo_url }}" class="mono-icon" target="_blank">&#xe089;</a></li>{% endif %}
+            {% if settings.youtube_url %}<li><a href="{{ settings.youtube_url }}" class="mono-icon" target="_blank">&#xe099;</a></li>{% endif %}
+            {% if settings.twitter_url %}<li><a href="{{ settings.twitter_url }}" class="mono-icon" target="_blank">&#xe087;</a></li>{% endif %}   
+            {% if settings.gplus_url %}<li><a href="{{ settings.gplus_url }}" class="mono-icon" target="_blank">&#xe039;</a></li>{% endif %}
+
+        </ul>
+        
+        
+    </div>
+    <!-- TODO: Could generate using menu.items -->
+    <ul class="footer-nav">
+        {{ fn('church_footer_links') }}
+       
+    </ul>
+
+    <div class="newsletter init">
+        {{ fn('mc4wp_form') }}
+    </div>
+</section>
+<section>
+    <p class="copyright">&copy; {{ settings.copyright }}</p>
+</section>

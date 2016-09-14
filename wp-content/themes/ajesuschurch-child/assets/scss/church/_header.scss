@@ -1,0 +1,36 @@
+
+/*********************
+TABLETS / DESKTOP
+*********************/
+
+@include media($base) {
+  .church-theme {
+    .logo {
+      position: relative;
+      width: 88%;
+      .colon {
+        display: none;
+      }
+      .title {
+        position: absolute;
+        top: -6px;
+        left: 32px;
+      }
+      .subtitle {
+        position: absolute;
+        bottom: -14px;
+        left: 33px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+/*********************
+TABLETS / DESKTOP
+*********************/
+
+@include media($small) {
+
+}
+

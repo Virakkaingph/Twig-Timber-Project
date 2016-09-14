@@ -1,0 +1,26 @@
+
+{% extends 'layout.twig' %}
+{% block content %}
+
+<section class="container copy">
+    {{ page.content }}
+</section>
+
+<ul id="churches" class="grid-menu sites">
+  {% for site in sites %}
+    <li class="site-{{ site.blog_id }}" {{ fn('set_bg', site.tile_image) }}>
+      <a href="{{ site.url }}/give" target="_blank">
+        <div class="inner">
+            <span class="name">{{ site.name }} Giving</span>
+        </div>
+      </a>
+    </li>
+  {% else %}
+    <li class="none">
+      <div class="inner">No churches</div>
+    </li>
+  {% endfor %}
+
+</ul>
+
+{% endblock %}

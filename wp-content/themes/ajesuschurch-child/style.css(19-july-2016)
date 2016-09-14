@@ -1,0 +1,15 @@
+/*
+Theme Name: AJC Church Theme
+Theme URI: http://www.ajesuschurch.org
+Description: Church theme for A Jesus Church.
+Author: Belief
+Author URI: http://www.beliefagency.com
+Template: ajesuschurch
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: fluid-layout, responsive-layout, translation-ready
+Text Domain: ajc-church
+*/
+
+@import url("../ajesuschurch/style.css");

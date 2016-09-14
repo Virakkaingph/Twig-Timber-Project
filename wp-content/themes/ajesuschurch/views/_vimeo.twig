@@ -1,0 +1,18 @@
+
+<!--
+TODO: JavaScript to link lightbox-content to #
+TODO: JavaScript to stop video when lightbox not visible (refresh iframe)
+TODO: JavaScript to adjust iframe height based on aspect ratio
+-->
+
+<div class="lightbox-target" id="watch">
+{% if hero_vimeo_id %}
+  <div class="lightbox-content">
+
+    <div class="inner">
+        <iframe id="player" src="//player.vimeo.com/video/{{ hero_vimeo_id }}" width="920" height="520" frameborder="0" title="{{ post.title }}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <a class="lightbox-close" href="#"></a>
+    </div>
+  </div>
+{% endif %}
+</div>

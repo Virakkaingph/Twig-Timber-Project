@@ -1,0 +1,15 @@
+
+{% extends 'layout.twig' %}
+{% block content %}
+
+<section class="container copy">
+    <h1>{{ ministry.title }}</h1>
+    {{ ministry.content }}
+</section>
+
+<section class="container final">
+    <h2 class="h3">{{ ministry.events_heading }}</h2>
+    {% include '_events.twig' %}
+</section>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+
+{% for lesson in series_lessons %}
+  <li class="lesson">
+      <a href="{{ lesson.permalink }}">
+          <div class="inner">
+            <span class="name">{{ loop.index }}. {{ lesson.title }}</span>
+            <span class="subtitle">{{ lesson.subtitle }}</span>
+          </div>
+          <span class="meta">
+            <strong>{{ lesson.speaker_name }}</strong> &nbsp;
+            <em>{{ lesson.teaching_date | date('M j, Y') }}</em>
+          </span>
+      </a>
+  </li>
+{% else %}
+  <li class="lesson none">
+    <div class="outer">
+      <div class="inner">No lessons</div>
+    </div>
+  </li>
+{% endfor %}

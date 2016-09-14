@@ -1,0 +1,48 @@
+
+{% extends 'layout.twig' %}
+{% block content %}
+
+<section id="location-information" class="container location-information copy">
+    <div class="home-about">
+	<h3>Gather</h3>
+	<p>{{ page.gather_block }}</p>
+	<p><a href="teaching" class="btn">Listen to Teachings</a></p>
+    </div>
+    <div class="home-times">
+        <h3>Gathering Times</h3>
+        <p>{{ fn('nl2br', settings.gather_times) }}</p>
+        <h3>Kids</h3>
+        <p>{{ page.bible_reading_block }}<br/></p>
+    </div>
+    <div class="home-place">
+        <h3>Gathering Place</h3>
+        <p>{{ fn('nl2br', settings.gather_address) }}</p>
+        <h3>Parking</h3>
+        <p>{{ page.lead_block }}</p>
+    </div>
+</section>
+
+<section class="container copy final">
+    {{ page.content }}
+</section>
+
+<ul id="ministries" class="grid-menu ministries">
+  <li class="learning" {{ fn('set_bg_id', page.learning_image, 'menu-tile') }}>
+      <a href="/learning"><div class="inner"><span class="name">Learning</span></div></a>
+  </li>
+  {% for ministry in ministries %}
+    <li class="ministry-{{ ministry.id }}" {{ fn('set_bg_id', ministry.tile_image, 'menu-tile') }}>
+        <a href="{{ ministry.link }}">
+          <div class="inner">
+            <span class="name">{{ ministry.name }}</span>
+          </div>
+        </a>
+    </li>
+  {% else %}
+    <li class="none">
+      <div class="inner">No ministries</div>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

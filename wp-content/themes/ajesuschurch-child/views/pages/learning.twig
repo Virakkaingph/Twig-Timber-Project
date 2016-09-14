@@ -1,0 +1,23 @@
+
+{% extends 'layout.twig' %}
+{% block content %}
+
+{{ fn('church_learning_menu') }}
+
+<section class="container copy gap">
+    {{ page.content }}
+</section>
+
+<section class="container copy final">
+    <div class="lead">{{ page.lead_block }}</div>
+    <div class="bible-reading">
+        {{ page.bible_reading_block }}
+    </div>
+    <p class="page-actions">
+        {% if reading_plan_src %}
+          <a href="{{ reading_plan_src }}" class="btn" target="_blank">Download PDF</a>
+        {% endif %}
+    </p>
+</section>
+
+{% endblock %}
